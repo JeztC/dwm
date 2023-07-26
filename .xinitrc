@@ -51,7 +51,7 @@ fi
 
 # Misc programs
 /home/jesse/Downloads/dwm-bar/dwm_bar.sh &
-feh --bg-scale /home/jesse/thumb-1920-1115490-2273267034.png
+feh --bg-scale /home/jesse/Downloads/arch.png
 imwheel
 parcellite &
 xkbcomp -w 0 xkbmap $DISPLAY
