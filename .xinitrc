@@ -50,15 +50,21 @@ fi
 
 
 # Misc programs
-/home/jesse/Downloads/dwm-bar/dwm_bar.sh &
-feh --bg-scale /home/jesse/Downloads/arch.png
+/home/jesse/dwm-bar/dwm_bar.sh &
+feh --bg-scale /home/jesse/arch.jpg
 imwheel
 parcellite &
+
+# Fixes the caps lock issue
 xkbcomp -w 0 xkbmap $DISPLAY
 
+# Fixes the secrets
 dbus-update-activation-environment --all
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
+
+# Fixes the NVIDIA refresh rate issue with dual monitor setup
+nvidia-settings --load-config-only
 
 # Execute dwm
 exec dwm
