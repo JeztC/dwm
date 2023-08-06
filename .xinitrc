@@ -66,5 +66,8 @@ export SSH_AUTH_SOCK
 # Fixes the NVIDIA refresh rate issue with dual monitor setup
 nvidia-settings --load-config-only
 
+# Fixes some java GUi such as pycharm windows
+wmname LG3D
+
 # Execute dwm
 exec dwm
