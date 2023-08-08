@@ -91,7 +91,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-        { 0,                            XK_Print,  spawn,          SHCMD("maim -s | xclip -selection clipboard -t image/png") },
+        { 0,                            XK_Print,  spawn,          SHCMD("maim -s --hidecursor | xclip -selection clipboard -t image/png") },
 	{ 0,                       	XF86XK_AudioLowerVolume,   spawn, {.v = downvol } },
 	{ 0,                      	XF86XK_AudioMute, spawn,   {.v = mutevol } },
 	{ 0,                       	XF86XK_AudioRaiseVolume,   spawn, {.v = upvol   } },
