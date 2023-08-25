@@ -1,6 +1,14 @@
 /* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
 
+/* alt-tab configuration */
+static const unsigned int tabModKey 		= 0x40;	/* if this key is hold the alt-tab functionality stays acitve. This key must be the same as key that is used to active functin altTabStart `*/
+static const unsigned int tabCycleKey 		= 0x17;	/* if this key is hit the alt-tab program moves one position forward in clients stack. This key must be the same as key that is used to active functin altTabStart */
+static const unsigned int tabPosY 			= 1;	/* tab position on Y axis, 0 = bottom, 1 = center, 2 = top */
+static const unsigned int tabPosX 			= 1;	/* tab position on X axis, 0 = left, 1 = center, 2 = right */
+static const unsigned int maxWTab 			= 600;	/* tab menu width */
+static const unsigned int maxHTab 			= 200;	/* tab menu height */
+
 /* appearance */
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -35,6 +43,9 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Sqlitebrowser",  NULL,       NULL,       1 << 8,       1,           -1 },
+	{ "Thunar",     NULL,       NULL,       0,            1,           -1 },
+        { "Mousepad",     NULL,       NULL,       0,            1,           -1 },
 };
 
 /* layout(s) */
@@ -78,7 +89,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
+	{ MODKEY,                       XK_q,	   view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
@@ -92,6 +103,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
         { 0,                            XK_Print,  spawn,          SHCMD("maim -s --hidecursor | xclip -selection clipboard -t image/png") },
+        { Mod1Mask,             	XK_Tab,    altTabStart,	   {0} },	
 	{ 0,                       	XF86XK_AudioLowerVolume,   spawn, {.v = downvol } },
 	{ 0,                      	XF86XK_AudioMute, spawn,   {.v = mutevol } },
 	{ 0,                       	XF86XK_AudioRaiseVolume,   spawn, {.v = upvol   } },
